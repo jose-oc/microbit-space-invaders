@@ -16,6 +16,7 @@ input.onButtonPressed(Button.AB, function () {
 input.onButtonPressed(Button.B, function () {
     Ship.change(LedSpriteProperty.X, 1)
 })
+let alienBomb: game.LedSprite = null
 let Laser: game.LedSprite = null
 let Alien: game.LedSprite = null
 let Ship: game.LedSprite = null
@@ -31,5 +32,16 @@ basic.forever(function () {
     if (Alien.isDeleted()) {
         Alien = game.createSprite(0, 0)
         Alien.set(LedSpriteProperty.Blink, 8)
+    }
+    if (Alien.get(LedSpriteProperty.X) == Ship.get(LedSpriteProperty.X)) {
+        alienBomb = game.createSprite(Alien.get(LedSpriteProperty.X), Alien.get(LedSpriteProperty.Y))
+        for (let index = 0; index < 5; index++) {
+            basic.pause(500)
+            alienBomb.change(LedSpriteProperty.Y, 1)
+            if (alienBomb.isTouching(Ship)) {
+                game.gameOver()
+            }
+        }
+        alienBomb.delete()
     }
 })
