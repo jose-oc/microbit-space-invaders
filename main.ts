@@ -1,6 +1,7 @@
 input.onButtonPressed(Button.A, function () {
     Ship.change(LedSpriteProperty.X, -1)
 })
+// Disparo
 input.onButtonPressed(Button.AB, function () {
     Laser = game.createSprite(Ship.get(LedSpriteProperty.X), Ship.get(LedSpriteProperty.Y))
     for (let index = 0; index < 5; index++) {
