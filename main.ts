@@ -41,6 +41,7 @@ basic.forever(function () {
             alienBomb.change(LedSpriteProperty.Y, 1)
             if (alienBomb.isTouching(Ship)) {
                 game.gameOver()
+                basic.showNumber(game.score())
             }
         }
         alienBomb.delete()
